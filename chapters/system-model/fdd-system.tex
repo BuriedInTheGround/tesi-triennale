@@ -1,0 +1,42 @@
+\begin{tikzpicture}[scale=0.65,>=latex]
+    \tikzstyle{every node}=[font=\fontsize{9}{9}\sffamily]
+
+    \draw[->] (0,0) -- (20,0) node[right]{$f$};
+
+    \filldraw[
+        fill=nord10!75!nord4,
+        draw=nord10!50!nord0
+    ] (1,0) rectangle (8,4)
+    node[nord6,midway]{\bfseries Uplink};
+    \filldraw[
+        fill=gray,
+        draw=darkgray
+    ] (2,0) rectangle (3.2,2.5);
+    \draw[->] (1.5,1) -- (2,1);
+    \draw[<-] (3.2,1) -- (3.7,1) node[right,align=left]{
+        \scriptsize Larghezza di banda \\ \scriptsize del sistema
+    };
+    \draw[Red,semithick] (2.6,0) -- (2.6,5) node[Black,above]{
+        \(f_\mathrm{UL}\)
+    };
+
+    \draw[<->] (1,-0.4) -- (8,-0.4)
+    node[below,midway]{Larghezza di banda alloccata};
+
+    \filldraw[
+        fill=nord14!90!nord3,
+        draw=nord14!50!nord0
+    ] (12,0) rectangle (19,4)
+    node[nord6,midway]{\bfseries Downlink};
+    \filldraw[
+        fill=gray,
+        draw=darkgray
+    ] (13,0) rectangle (14.2,2.5);
+    \draw[Red,semithick] (13.6,0) -- (13.6,5) node[Black,above]{
+        \(f_\mathrm{DL}\)
+    };
+
+    \draw[<->] (8,2) -- (12,2) node[below,midway]{Banda proibita};
+
+    \draw[<->] (2.6,5) -- (13.6,5) node[above,midway]{Spaziatura duplex};
+\end{tikzpicture}

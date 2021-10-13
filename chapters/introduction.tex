@@ -1,0 +1,38 @@
+\chapter{Introduzione}
+
+\thispagestyle{empty}
+
+\vfill
+
+Nei sistemi cellulare, il \textit{channel-state information} (\textit{CSI},
+informazione sullo stato del canale) fa riferimento a note proprietà del canale
+di comunicazione. La stima del canale (in inglese, ``channel estimation''),
+ovvero il metodo usato per stimare il CSI, è di fondamentale importanza per
+massimizzare le prestazioni dei ricevitori nel compensare le alterazioni
+introdotte dal canale wireless.
+
+L'ottenimento di una stima accurata del canale dipende dalla modalità operativa
+del canale, vale a dire, \textit{time-division duplexing} (\textit{TDD}, duplex
+a divisione di tempo) e \textit{frequency-division duplexing} (\textit{FDD},
+duplex a divisione di frequenza). In modalità TDD, le trasmissioni in
+\textit{downlink} (\textit{DL}) (dalla \textit{base station} (\textit{BS},
+stazione base) agli \textit{user terminals} (\textit{UT}s, terminali utente)) e
+le trasmissioni in \textit{uplink} (\textit{UL}) (dagli UTs alla BS) avvengono
+sulla stessa banda di frequenza, ma in istanti di tempo differenti. In modalità
+FDD, la BS e gli UTs utilizzano bande di frequenza separate per lo scambio di
+dati in UL e DL, consentendo la trasmissione simultanea in entrambe le
+direzioni. La stima del canale risulta più semplice quando si opera in modalità
+TDD a causa della reciprocità del canale. D'altra parte, operando in modalità
+FDD, la BS solitamente ottiene una stima del canale di DL dallo UT con cui la
+avviene la comunicazione; nel seguito faremo riferimento a questo procedimento
+come approccio feedback-only.  In particolare, la BS trasmette dei segnali
+pilota tramite i quali lo UT stima il canale e ne manda indietro una versione
+quantizzata alla BS.
+
+In questa trattazione, proponiamo una procedura di feedback del CSI a tasso
+variabile con approccio feedback-only, il cui obiettivo è di minimizzare
+l'overhead della segnalazione. Per fare ciò, sfrutteremo la dipendenza
+statistica presente tra il canale di UL e il canale di DL, che origina
+dall'ambiente fisico in cui si trova il canale fisico di comunicazione.
+
+\input{chapters/introduction/notation.tex}

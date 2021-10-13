@@ -1,0 +1,122 @@
+\chapter{Modello del sistema}
+
+\thispagestyle{empty}
+
+\begin{figure}[ht]
+    \centering
+    \input{chapters/system-model/fdd-system.tex}
+    \caption{Struttura tipica dei moderni sistemi cellulare FDD.}
+    \label{fig:fdd-system}
+\end{figure}
+
+Consideriamo il sistema cellulare in modalità FDD illustrato in
+Figura~\ref{fig:fdd-system}, dove \(f_\mathrm{UL}\) e \(f_\mathrm{DL}\)
+denotano le frequenze della portante centrale di UL e DL, rispettivamente.
+Assumiamo che la BS comunichi con diversi UTs e che tutti i dispositivi siano
+dotati di una singola antenna.
+
+In questa trattazione ci concentriamo su una trasmissione multiportante a
+singola antenna, implementata, ad esempio, con \textit{orthogonal
+frequency-division multiplexing} (\textit{OFDM}, multiplex a divisione di
+frequenze ortogonali) e \textit{single-carrier frequency-division multiple
+access} (\textit{SC-FDMA}, accesso multiplo a divisione di frequenza a singola
+portante) per le trasmissioni in DL e UL, rispettivamente, così come nello
+standard \textit{Long-Term Evolution} (\textit{LTE}). Si noti che le
+derivazioni riportate e le tecniche proposte si applicano anche ad altri
+contesti, come ad esempio scenari \textit{multiple-input multiple-output}
+(\textit{MIMO}) a banda stretta dove i canali sono descritti da matrici che
+delineano i collegamenti tra coppie di antenne. Nella nostra situazione, i
+canali di UL e DL sono entrambi descritti da \(N/2\) numeri complessi (con
+\(N\) pari), ognuno denotante il coefficiente di una sottoportante
+OFDM.\footnotemark
+
+\footnotetext{Si noti che in un contesto MIMO la dimensione dei due vettori
+potrebbe essere differente. È il caso ad esempio di uno scenario
+\textit{multi-user MIMO} (\textit{MU-MIMO}), nel quale una BS con \(M\) antenne
+serve \(K\) UTs a singola antenna, e tipicamente si ha \(M \gg K\) di modo da
+poter servire più utenti o operare meglio alle frequenze delle onde
+millimetriche. Ad ogni modo, le derivazioni riportate non dipendono dalla
+dimensione dei due vettori e possono essere facilmente generalizzate.}
+
+Il canale aggregato UL-DL è descritto da un vettore di \(N\) numeri complessi.
+Ci concentriamo sul problema dell'acquisizione del canale di DL alla BS, e
+assumiamo che questa acquisizione avvenga in momenti diversi per ognuno degli
+UT. Restringiamo il nostro studio al caso in cui un solo UT è presente nel
+sistema. Denotiamo i vettori dei canali di UL e DL come
+\begin{equation}
+    \begin{aligned}
+        \bm{h}^\mathrm{(U)} &= \left[
+            h_0^\mathrm{(U)}, \dots, h_{N/2-1}^\mathrm{(U)}
+            \right] \in \mathbb{C}^{1 \times N/2},\\
+        \bm{h}^\mathrm{(D)} &= \left[
+            h_{N/2}^\mathrm{(D)}, \dots, h_{N-1}^\mathrm{(D)}
+            \right] \in \mathbb{C}^{1 \times N/2},
+    \end{aligned}
+\end{equation}
+e il vettore del canale globale come
+\begin{equation}
+    \bm{h} = \left[
+        \bm{h}^\mathrm{(U)}, \bm{h}^\mathrm{(D)}
+        \right] \in \mathbb{C}^{1 \times N}.
+\end{equation}
+In generale, i canali di UL e DL sono in relazione tra loro, dal momento che
+hanno origine dallo stesso canale fisico. Infatti, i fenomeni fisici (quali, ad
+esempio, la riflessione, la dispersione e l'assorbimento) che determinano il
+canale a una data frequenza hanno un comportamento simile a frequenze vicine.
+Questo risulta particolarmente vero per un canale con solo pochi dispersori,
+come ad esempio un canale a onde millimetriche. In generale, poiché il segnale
+ricevuto alla BS e allo UT viene in entrambi i casi normalizzato a una data
+potenza adeguata per eseguire la quantizzazione, assumiamo che sia
+\(\bm{h}^\mathrm{(U)}\) che \(\bm{h}^\mathrm{(D)}\) abbiano norma unitaria,
+ovvero,
+\begin{equation}
+    \lnorm \bm{h}^\mathrm{(U)} \rnorm^2 = 1, \quad
+    \lnorm \bm{h}^\mathrm{(D)} \rnorm^2 = 1.
+\end{equation}
+
+In alcuni casi, come ad esempio nello standard LTE, il feedback del
+coefficiente di normalizzazione viene effettuato del segnale di
+\textit{channel-quality information} (\textit{CQI}, informazione sulla qualità
+del canale); per cui, possiamo considerare il problema del feedback della norma
+come a sé stante.\footnotemark
+
+\footnotetext{Si noti che in un contesto MIMO massivo, l'effetto di indurimento
+del canale può anch'esso essere sfruttato per recuperare l'informazione
+riguardo la norma del canale.}
+
+Assumiamo inoltre che, all'inizio della trasmissione, la BS trasmetta un numero
+sufficiente di simboli pilota affinché lo UT possa ottenere una stima perfetta
+del canale di DL e, allo stesso modo, lo UT trasmetta sufficienti simboli
+pilota di modo che la BS ottenga una perfetta stima del canale di UL.
+
+Il problema affrontato è come ottenere una stima del canale di DL alla BS,
+tramite uno scambio di comunicazioni con lo UT. Alla BS, questa conoscenza
+viene poi utilizzata per il bit- e power-loading delle sottoportanti e/o per il
+beamforming quando più antenne vengono utilizzate. Quindi, la nostra attenzione
+è sia sulle strategie di segnalazione che sulla quantizzazione vettoriale di
+\(\bm{h}^\mathrm{(U)}\) e \(\bm{h}^\mathrm{(D)}\), denotate rispettivamente
+come
+\begin{equation}
+    q(\bm{h}^\mathrm{(U)}), \quad q(\bm{h}^\mathrm{(D)}),
+\end{equation}
+utilizzando il minor numero di bit possibile nello scambio di informazioni tra
+BS e UT. L'approccio considerato in questa trattazione utilizza il feedback del
+CSI a tasso variabile. In questo caso, la BS non effettua una segnalazione in
+feedforward, mentre il segnale di feedback che viene trasmesso dallo UT
+utilizza un numero variabile di bit ed è ottenuto tramite uno schema di
+codifica entropica Slepian-Wolf basato sul lavoro di Al Jabri e
+Al-Issa.\cite{10.1007/BFb0024445}
+
+Come misura di distorsione, utilizziamo l'\textit{errore quadratico medio
+normalizzato} (\textit{NMSE}, dall'inglese ``normalized mean squared error'')
+dell'errore di quantizzazione, ovvero,
+\begin{equation} \label{eq:nmse}
+    \mathrm{NMSE} = \mathbb{E}\left[
+        \lnorm \bm{h}^\mathrm{(D)} - q(\bm{h}^\mathrm{(D)}) \rnorm^2
+        \right],
+\end{equation}
+dove la normalizzazione fa riferimento al fatto che \(\bm{h}^\mathrm{(D)}\) è
+stato normalizzato a norma unitaria. Per cui, la \eqref{eq:nmse} può anche
+essere interpretata come \textit{errore quadratico medio} (\textit{MSE}) per
+componente vettoriale. Si noti che questa definizione differisce da altre
+comunemente definite come MSE normalizzato.

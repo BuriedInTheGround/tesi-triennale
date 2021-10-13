@@ -1,0 +1,90 @@
+\input{base/model}
+
+\begin{document}
+
+\frontmatter
+
+\begin{titlepage}
+    \begin{center}
+        \includegraphics[scale=0.1]{images/unipd-red.png}
+
+        \vspace{0.8cm}
+        \textsc{\LARGE Università degli Studi di Padova}\\
+        \vspace{0.45cm}
+        \textsc{\large Dipartimento di Ingegneria dell'Informazione}\\
+        \vspace{0.4cm}
+        \textsc{\large Corso di Laurea in}\\
+        \textsc{\large Ingegneria Informatica}\\
+
+        \vfill
+        {\LARGE \bfseries Titolo della Tesi}\\
+
+        \vfill
+        \textit{\large Laureando}
+        \hfill
+        \textit{\large Relatore}\\
+        \textsc{\large Simone Ragusa}
+        \hfill
+        \textsc{\large Prof. Stefano Tomasin}\\
+
+        \vspace{0.4cm}
+        \hfill
+        \textit{\large Co-relatore}\\
+        \hfill
+        \textsc{\large nome cognome}\\
+
+        \vfill
+        \line(1, 0){390}\\
+        \textsc{Anno Accademico 2021/2022}
+    \end{center}
+\end{titlepage}
+
+% Left page empty
+\clearpage{\thispagestyle{empty}\cleardoublepage}
+
+% Dedication
+\clearpage{\cleardoublepage}
+\input{dedication}
+\thispagestyle{empty}
+
+% Contents
+\clearpage{\cleardoublepage}
+\tableofcontents
+\markboth{}{}
+\thispagestyle{empty}
+
+% Abstract
+\clearpage{\cleardoublepage}
+\input{abstract}
+\markboth{}{}
+\thispagestyle{empty}
+
+\mainmatter
+
+% ------- Chapters -------
+
+\clearpage{\cleardoublepage}
+\input{chapters/introduction.tex}
+
+\clearpage{\cleardoublepage}
+\input{chapters/system-model.tex}
+
+\clearpage{\cleardoublepage}
+\input{chapters/csi-feedback.tex}
+
+\clearpage{\cleardoublepage}
+\input{chapters/results.tex}
+
+% ------------------------
+
+% ------ Appendices ------
+% empty
+% ------------------------
+
+% Bibliography
+\clearpage{\cleardoublepage}
+\bibliographystyle{IEEEtran}
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliography{bibliography}
+
+\end{document}

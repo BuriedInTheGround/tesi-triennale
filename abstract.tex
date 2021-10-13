@@ -1,0 +1,12 @@
+% Define `abstract` environment missing in the `book` class
+\newenvironment{abstract}
+{\cleardoublepage
+\null\vfill
+\begin{center}
+    \bfseries \abstractname
+\end{center}}
+{\vfill\null}
+
+\begin{abstract}
+    \lipsum[1]
+\end{abstract}
