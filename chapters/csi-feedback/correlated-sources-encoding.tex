@@ -1,3 +1,49 @@
 \section{Codifica di sorgenti correlate}
 
-\lipsum[4]
+Dal teorema di Shannon sulla codifica di sorgente
+\cite{10.1002/j.1538-7305.1948.tb01338.x} è noto che per codificare una
+sorgente \(X\), un tasso \(R > \entropy{X}\) è sufficiente. Consideriamo ora
+due sorgenti correlate \((X,Y) \sim p(x, y)\). In questo caso, un tasso pari a
+\(\entropy{X,Y}\) è sufficiente per codificarle congiuntamente. Supponiamo che
+al ricevitore si desideri ricostruire \(X\) e \(Y\) separatamente. Si vede
+facilmente che un tasso \(R = R_X + R_Y > \entropy{X} + \entropy{Y}\) è
+sufficiente. Tuttavia, Slepian e Wolf \cite{1055037} hanno dimostrato che un
+tasso totale pari a \(R = \entropy{X,Y}\) è sufficiente anche per codificare
+separatamente le due sorgenti correlate.
+
+Riportiamo nel seguito il teorema di Slepian-Wolf
+\cite{10.1002/047174882X.ch15}. In Figura~\ref{fig:sw-configuration} è
+illustrata la situazione considerata.
+
+\begin{figure}[ht]
+    \centering
+    \input{chapters/csi-feedback/sw-configuration.tex}
+    \caption{Configurazione per la codifica di sorgente Slepian-Wolf.}
+    \label{fig:sw-configuration}
+\end{figure}
+
+\begin{thm}[Slepian-Wolf \textnormal{\cite{10.1002/047174882X.ch15}}]
+    \label{thm:sw}
+
+    Sia \((X_1,Y_1),(X_2,Y_2),\dots\) una sequenza di variabili aleatorie
+    congiunte, indipendenti e identicamente distribuite tali che la generica
+    coppia \((X,Y) \sim p(x, y)\).\\
+    Per il problema della codifica di sorgenti distribuite per la sorgente
+    \((X,Y)\), la regione di tasso raggiungibile è data da
+    \begin{alignat}{1}
+        R_X &\ge \entropy{X \vert Y}, \label{eq:SW1} \\
+        R_Y &\ge \entropy{Y \vert X}, \label{eq:SW2} \\
+        R_X + R_Y &\ge \entropy{X,Y}. \label{eq:SWsum}
+    \end{alignat}
+\end{thm}
+
+La Figura~\ref{fig:sw-rate-region} mostra la regione descritta dal
+Teorema~\ref{thm:sw}.
+
+\begin{figure}[ht]
+    \centering
+    \input{chapters/csi-feedback/sw-rate-region.tex}
+    \caption{Regione \(\mathcal{R}\) di tasso raggiungibile con la codifica di
+    sorgente Slepian-Wolf.}
+    \label{fig:sw-rate-region}
+\end{figure}
