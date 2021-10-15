@@ -2,6 +2,30 @@
 
 \thispagestyle{empty}
 
+Detti \(b_\mathrm{F}\) il numero di bit trasmessi in feedforward, ovvero dalla
+BS allo UT, e \(b_\mathrm{B}\) il numero di bit trasmessi come feedback, dallo
+UT alla BS, definiamo come
+\[
+    B = b_\mathrm{F} + b_\mathrm{B}
+\]
+il numero totale di bit scambiati tra BS e UT.
+
+Nella procedura a tasso variabile, illustrata in seguito, imponiamo
+\(b_\mathrm{F} = 0\), ovvero nessun bit viene inviato dalla BS allo UT in
+feedforward. In particolare, permettiamo al numero di bit di feedback
+\(b_\mathrm{B}\) di variare, pertanto la segnalazione di feedback ha un tasso
+variabile.
+
+Anzitutto, modelliamo lo scenario considerato come una codifica di sorgente di
+due sorgenti correlate (i canali di UL e DL, in questo caso).  Quindi,
+dimostreremo che la presenza di una segnalazione di feedforward da parte della
+BS non contribuisce a ridurre il tasso medio della segnalazione di feedback,
+risultando quindi superflua al fine di ridurre l'overhead complessivo. Infine,
+proponiamo una procedura con approccio feedback-only a tasso variabile, basata
+sull'entropia condizionale del canale di DL condizionata al canale di DL.
+
+\lipsum[4]  % TODO: add something about the noisy case.
+
 \input{chapters/csi-feedback/correlated-sources-encoding.tex}
 
 \input{chapters/csi-feedback/feedback-only.tex}
