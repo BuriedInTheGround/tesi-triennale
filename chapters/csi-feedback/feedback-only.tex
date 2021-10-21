@@ -1,3 +1,77 @@
 \section{Approccio feedback-only}
 
-\lipsum[4]
+Mostriamo anzitutto l'ottimalità dell'approccio feedback-only per la
+segnalazione del CSI quando un tasso di segnalazione variabile viene
+utilizzato. Per semplicità di derivazione, assumiamo che entrambi i canali
+\(\bm{h}^\mathrm{(U)}\) e \(\bm{h}^\mathrm{(D)}\) possano essere rappresentati
+da alfabeti di dimensione finita molto grande. In particolare, per
+\(\bm{h}^\mathrm{(D)}\), consideriamo una quantizzazione tale da garantire
+l'MSE desiderato sul canale di DL alla BS. Quindi, assumiamo che la BS intenda
+ricostruire perfettamente il canale di DL senza distorsione. Inoltre, imponiamo
+un vincolo solamente sul numero totale di bit della segnalazione \(B\), senza
+ulteriormente richiedere un bilanciamento tra i tassi di segnalazione in UL e
+DL.
+
+\begin{thm}
+    \label{thm:feedback-only}
+
+    Per una procedura di segnalazione che utilizza un feedback a tasso
+    variabile con media \(b_\mathrm{B}\) e un feedforward a tasso variabile con
+    media \(b_\mathrm{F}\), il tasso minimo totale della segnalazione \(B =
+    b_\mathrm{B} + b_\mathrm{F}\) è ottenuto con un approccio feedback-only,
+    ovvero per \(b_\mathrm{F} = 0\).
+\end{thm}
+
+\begin{proof}
+    Possiamo vedere la procedura di feedback come una codifica Slepian-Wolf
+    (vedi Sezione~\ref{sec:correlated-sources-encoding}) nella quale le due
+    sorgenti correlate (nel nostro caso, i canali di UL e DL) vengono
+    codificate separatamente e poi inviate a una destinazione (la BS) che deve
+    ricostruire entrambe. Si noti che nel nostro scenario il canale di UL è già
+    noto alla BS, di conseguenza questa parte della codifica risulta banale.
+    Ora, in presenza di feedforward, lo UT conosce sia la variabile di
+    feedforward \(c^\mathrm{(F)}\) che rappresenta la versione quantizzata di
+    \(\bm{h}^\mathrm{(U)}\) che il canale di DL \(\bm{h}^\mathrm{(D)}\).
+    Pertanto, denotano con \(R_\mathrm{L}\) il tasso medio per la
+    rappresentazione locale del canale di UL alla BS, il teorema di
+    Slepian-Wolf fornisce
+    \begin{alignat}{1}
+        b_\mathrm{B} &\ge \entropy{
+            \bm{h}^\mathrm{(D)},c^\mathrm{(F)} \vert \bm{h}^\mathrm{(U)}
+        }, \label{eq:fo-proof-1} \\
+        R_\mathrm{L} &\ge \entropy{
+            \bm{h}^\mathrm{(U)} \vert \bm{h}^\mathrm{(D)},c^\mathrm{(F)}
+        }, \label{eq:fo-proof-2} \\
+        b_\mathrm{B} + R_\mathrm{L} &\ge \entropy{
+            \bm{h}^\mathrm{(D)},\bm{h}^\mathrm{(U)},c^\mathrm{(F)}
+        }. \label{eq:fo-proof-3}
+    \end{alignat}
+    Si noti che, dal momento che non ci sono limitazioni per la
+    rappresentazione interna del canale di UL alla BS, la \eqref{eq:fo-proof-2}
+    e la \eqref{eq:fo-proof-3} sono trascurabili, o in altre parole, non è
+    limitante porre \(R_\mathrm{L} = \infty\); quindi, la sola condizione
+    rilevante è
+    \begin{equation}
+        \label{eq:fo-proof-4}
+        b_\mathrm{B} \ge \entropy{
+            \bm{h}^\mathrm{(D)},c^\mathrm{(F)} \vert \bm{h}^\mathrm{(U)}
+        }.
+    \end{equation}
+    Tuttavia, poiché \(c^\mathrm{(F)}\) è funzione deterministica di
+    \(\bm{h}^\mathrm{(U)}\), la \eqref{eq:fo-proof-4} è equivalente a
+    \begin{equation}
+        \label{eq:fo-proof-5}
+        b_\mathrm{B} \ge \entropy{
+            \bm{h}^\mathrm{(D)} \vert \bm{h}^\mathrm{(U)}
+        }.
+    \end{equation}
+    Quindi, abbiamo dimostrato che la segnalazione in feedforward non è utile
+    al fine di ridurre i bit di feedback.
+\end{proof}
+
+Ancora una volta, vogliamo sottolineare che questo risultato è valido quando
+non sono imposte altre condizioni a sbilanciare i tassi di segnalazione in UL e
+DL, ovvero quando non ci sono ulteriori limitazioni su \(b_\mathrm{B}\) e
+\(b_\mathrm{F}\). Nella pratica, gli svantaggi nel segnalare in UL e DL
+potrebbero essere differenti, e soluzioni alternative potrebbero divenire
+praticabili.
