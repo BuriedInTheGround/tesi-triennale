@@ -1,3 +1,98 @@
 \section{Procedura di codifica}
 
-\lipsum[4]
+Il Teorema~\ref{thm:feedback-only} mostra che, quando una codifica a tasso
+variabile viene utilizzata, è possibile operare un approccio feedback-only.
+Proponiamo ora una procedura di codifica basata su quanto descritto da Al Jabri
+e Al-Issa.\cite{10.1007/BFb0024445}
+
+Modelliamo il canale di UL come una sorgente discreta di informazione, con
+alfabeto \(\set{V}\), che è, di fatto, il codebook utilizzato alla BS per la
+rappresentazione locale del canale di UL, con \(\abs{\set{V}} = \gamma =
+2^{b_\mathrm{U}}\) parole di codice. Allo stesso modo, modelliamo il canale di
+DL come una sorgente discreta di informazione, con alfabeto \(\set{D} =
+\set{D}_1\), cioè l'unico codebook di DL possibile (dato che per \(b_\mathrm{F}
+= 0\), \(\alpha = 2^{b_\mathrm{F}} = 1\)), avente \(\abs{\set{D}} = \beta =
+2^{b_\mathrm{B}}\) parole di codice.
+
+La distribuzione congiunta delle coppie \((\bm{v}_i,\bm{d}_j) \in
+\set{V} \times \set{D}\) è descritta dalla matrice di densità di probabilità
+discreta congiunta \(\bm{P}\), il cui \((i,j)\)-esimo elemento è
+\begin{equation}
+    p_{i,j} = p(\bm{v}_i, \bm{d}_j) = \prob{
+        q(\bm{h}^\mathrm{(U)}) = \bm{v}_i ,
+        q(\bm{h}^\mathrm{(D)}) = \bm{d}_j
+    } .
+\end{equation}
+
+La sparsità della matrice \(\bm{P}\) aumenta con il crescere di \(B\), di
+\(b_\mathrm{U}\), o della correlazione tra UL e DL.
+
+Come descritto da Al Jabri e Al-Issa \cite{10.1007/BFb0024445}, è possibile
+minimizzare il tasso di codifica determinando una partizione di \(\set{D}\) che
+abbia entropia minima, come illustrato nella procedura a seguire.
+
+\begin{enumerate}
+
+    \item Applicare la stessa dimensione di blocco ai due alfabeti, ovvero
+        porre \(b_\mathrm{B} = b_\mathrm{U}\).
+
+    \item Per ogni \(j,\,j = 1,\dots,\beta\), costruire un sottoinsieme
+        \(\set{V}_i\) di \(\set{V}\) tale che
+        \begin{equation}
+            \set{V}_i = \mleft\{
+                \bm{v} \mid \bm{v} \in \set{V} \land
+                \bm{d}_j \in \set{D} \land
+                p(\bm{v}\given\bm{d}_j)>0
+                \mright\}. \label{eq:subsets-of-v-cond}
+        \end{equation}
+        Si noti che, poiché \(p(\bm{v}\mid\bm{d}_j) =
+        \frac{p(\bm{v},\bm{d}_j)}{p(\bm{d}_j)}\), la
+        \eqref{eq:subsets-of-v-cond} è equivalente a
+        \begin{equation}
+            \set{V}_i = \mleft\{
+                \bm{v} \mid \bm{v} \in \set{V} \land
+                \bm{d}_j \in \set{D} \land
+                p(\bm{v},\bm{d}_j)>0
+                \mright\}, \label{eq:subsets-of-v}
+        \end{equation}
+        dove \(p(\bm{v},\bm{d}_j)\) può essere valutata direttamente, nota la
+        matrice di densità di probabilità discreta congiunta \(\bm{P}\).
+
+    \item Costruire tutte le possibili partizioni \(\set{P}\) di \(\set{D}\)
+        tali che
+        \begin{equation*}
+            \forall \set{D}_i \in \set{P},\
+            \forall \bm{d}_j,\bm{d}_k \in \set{D}_i,\
+            j \neq k
+            \implies \set{V}_j \cap \set{V}_k = \emptyset ,
+        \end{equation*}
+        dove \(\set{V}_j,\set{V}_k\) sono sottoinsiemi di \(\set{V}\) come
+        definiti al punto precedente.
+
+    \item Data una delle possibili partizioni \(\set{P}\) del punto precedente,
+        sia \(\xi = \abs{\set{P}}\). Dato l'\(i\)-esimo insieme \(\set{D}_i \in
+        \set{P}\), sia \(\tau = \abs{\set{D}_i}\), da cui \(\set{D}_i =
+        \{\bm{d}_1^{(i)},\dots,\bm{d}_\tau^{(i)}\}\). Sia \(\bm{s}_i\) un
+        simbolo che rappresenta l'insieme \(\set{D}_i\), con una probabilità
+        associata \(p(\bm{s}_i) = \sum_{j=1}^\tau p(\bm{d}_j^{(i)})\).
+        Individuare la partizione di \(\set{D}\) a entropia minima tra quelle
+        costruite al punto precedente, ovvero,
+        \begin{equation}
+            \set{P}_\mathrm{min} = \min_\set{P}
+            \sum_{i=1}^\xi p(\bm{s}_i)\log_2\frac{1}{p(\bm{s}_i)}.
+        \end{equation}
+
+\end{enumerate}
+
+Dopo aver individuato la partizione di \(\set{D}\) a entropia minima, la BS
+comunica allo UT di utilizzare tale partizione. Quindi, dopo aver stimato il
+canale di DL, lo UT determina il sottoinsieme \(\set{D}_h\) a cui il vettore
+stimato appartiene fra quelli della partizione designata, e invia alla BS
+l'indice \(h\) di tale sottoinsieme, anziché quello di un singolo vettore del
+codebook. A seguito del ricevimento dell'indice \(h\) del sottoinsieme, la BS è
+in grado di discriminare l'esatto vettore di DL sfruttando l'informazione che
+già conosce sul canale di UL. Infatti, una volta noto il sottoinsieme di UL
+contenente il vettore del canale di DL, la BS può recuperare il canale di DL
+grazie alla proprietà di non sovrapposizione dei sottoinsiemi nella partizione.
+
+\input{chapters/csi-feedback/p-matrix-sparsification.tex}

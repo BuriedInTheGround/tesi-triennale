@@ -7,18 +7,28 @@
 \newcommand{\R}{\mathbb{R}}    % Real
 \renewcommand{\C}{\mathbb{C}}  % Complex
 
+% Upright i-hat
+\newcommand{\ihat}{\hat{\textrm{\i}}}
+
 % Leibniz's differentiation notation
 \newcommand{\dd}{\mathop{}\,\mathrm{d}}
 
 % Norm, as ||⋅||
-\newcommand{\lnorm}{\left\|}
-\newcommand{\rnorm}{\right\|}
+\newcommand{\lnorm}{\mleft\|}
+\newcommand{\rnorm}{\mright\|}
 
 % Absolute value and cardinality
-\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\abs}[1]{\mleft| #1 \mright|}
 
 % Define
 \newcommand{\define}{\overset{\Delta}{=}}
+
+% Better \forall & \exists and new \existsunique
+\let\oldforall\forall
+\renewcommand{\forall}{\oldforall \,}
+\let\oldexists\exists
+\renewcommand{\exists}{\oldexists \:}
+\newcommand{\existsunique}{\oldexists! \:}
 
 % Sets
 \newcommand{\set}[1]{\mathcal{#1}}
@@ -31,11 +41,20 @@
 \newcommand{\conjtran}[1]{\bm{#1}^{H}}  % Conjugate-transpose
 
 % Probability, expected value, and entropy
-\newcommand{\prob}[1]{\mathbb{P}\left[ #1 \right]}
-\newcommand{\expect}[1]{\mathbb{E}\left[ #1 \right]}
-\newcommand{\entropy}[1]{\mathbb{H}\left[ #1 \right]}
+\newcommand{\prob}[1]{\mathbb{P}\mleft[ #1 \mright]}
+\NewDocumentCommand \expect { o m } {
+    \mathbb{E}\IfValueT{#1}{\sb{#1}}\mleft[ #2 \mright]
+}
+\newcommand{\entropy}[1]{\mathbb{H}\mleft[ #1 \mright]}
+
+% Given that (conditional probability)
+\newcommand{\given}{\;\middle|\;}
 
 % Theorems
 \newtheorem{thm}{Teorema}
+
+% Argmin & Argmax
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
 
 % -----------------------------

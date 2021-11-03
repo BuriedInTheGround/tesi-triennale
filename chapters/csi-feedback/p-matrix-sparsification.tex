@@ -1,0 +1,20 @@
+\subsection{Sparsificazione della matrice di densità di probabilità discreta
+congiunta}
+
+L'approccio proposto risulta tanto più efficace quanto più la matrice di
+densità di probabilità discreta congiunta è sparsa. Aumentare le dimensioni
+della matrice, ovvero aumentare \(b_\mathrm{B}\) e \(b_\mathrm{U}\), incrementa
+la sparsità della matrice, ma avendo un vincolo su \(b_\mathrm{B}\) (necessario
+a limitare l'overhead complessivo), e conseguentemente su \(b_\mathrm{U}\) in
+base alla prima fase della procedura, è necessario ricorrere a una strategia
+differente.
+
+La tecnica proposta consiste nell'indurre deliberatamente sparsità sulla
+matrice, ponendo a zero gli elementi della matrice le cui coppie di vettori di
+UL-DL presentano una bassa probabilità di verificarsi. A seguito di questo
+approccio, quei vettori che prima erano quantizzati da elementi ora posti a
+zero devono essere quantizzati utilizzando un'altra coppia di vettori,
+ovverosia la seconda più vicina (secondo la metrica considerata). Questa
+procedura fornisce certamente una matrice sparsa, a scapito però di un NMSE
+maggiore, dal momento che non sempre è utilizzata la miglior coppia di vettori
+per la quantizzazione dei canali di UL e DL.

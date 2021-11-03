@@ -1,0 +1,73 @@
+\section{Progettazione dei codebook}
+
+Un codebook di \(\beta\) in \(\C^{1 \times N/2}\) elementi è completamente
+definito da
+\begin{itemize}
+
+    \item una partizione \(\{\set{R}_j, j=1,\dots,\beta\}\) di
+        \(\C^{1 \times N/2}\), tale che \(\bigcup_{j=1}^\beta \set{R}_j = \C^{1
+        \times N/2}\), e che \(\set{R}_j \cap \set{R}_\ell = \emptyset\) per
+        \(j \neq \ell\);
+
+    \item \(\beta\) vettori \(\bm{w}_1,\dots,\bm{w}_\beta\), dove il vettore
+        \(i\)-esimo \(\bm{w}_i\) è associato all'\(i\)-esimo insieme
+        \(\set{R}_i\) della partizione descritta al punto precedente.
+
+\end{itemize}
+
+Sia \(\set{U} = \{\bm{u}_1,\dots,\bm{u}_\alpha\}\) il codebook di \(\alpha\)
+parole di codice utilizzato alla BS per la quantizzazione della stima del
+canale di UL. Sia
+\begin{equation}
+    c^\mathrm{(F)} = \argmin_{i \in \{1,\dots,\alpha\}}
+        \lnorm \bm{u}_i - \bm{h}^\mathrm{(U)} \rnorm^2
+\end{equation}
+detta \textit{variabile} (o indice) \textit{di feedforward}.
+
+Sia \(\{\set{D}_1,\dots,\set{D}_\alpha\}\) un insieme di \(\alpha\) codebook
+noto sia alla BS che allo UT, dove l'\(i\)-esimo codebook \(\set{D}_i =
+\{\bm{d}_1^{(i)},\dots,\bm{d}_\beta^{(i)}\}\) contiene \(\beta\) parole di
+codice. Sia
+\begin{equation}
+    c^\mathrm{(B)} = \argmin_{j \in \{1,\dots,\beta\}}
+        \lnorm \bm{d}_j^{(c^\mathrm{(F)})} - \bm{h}^\mathrm{(D)} \rnorm^2
+\end{equation}
+detta \textit{variabile} (o indice) \textit{di feedback}.
+
+Infine, sia \(\set{V} = \{\bm{v}_1,\dots,\bm{v}_\gamma\}\) il
+codebook di \(\gamma \ge \alpha\) parole di codice utilizzato alla BS per la
+quantizzazione locale del canale di UL.
+
+La procedura di quantizzazione associa ogni vettore \(\bm{x} \in \C^{1 \times
+N/2}\) a una regione dello spazio \(\C^{1 \times N/2}\) stesso, ovvero \(\bm{x}
+\in \set{R}_{\ihat}\), e pertanto il vettore quantizzato è \(q(\bm{x}) =
+\bm{w}_{\ihat}\). L'operazione di progettazione dei codebook, cioè la scelta
+delle regioni di quantizzazione \(\{\set{R}_i\}\) e dei relativi vettori
+\(\bm{w}_i\), ha l'obiettivo di minimizzare una data metrica di quantizzazione.
+Nel nostro caso, i codebook di UL, \(\set{U}\) e \(\set{V}\), sono progettati
+con lo scopo di minimizzare il NMSE, vale a dire,
+\begin{equation}
+    \expect[\bm{h}^\mathrm{(U)}]{
+        \lnorm \bm{h}^\mathrm{(U)} - q(\bm{h}^\mathrm{(U)}) \rnorm^2
+    }, \label{eq:min-ul-codebook}
+\end{equation}
+(o l'equivalente per \(\set{V}\)) dove il valore atteso è valutato sulla
+distribuzione di \(\bm{h}^\mathrm{(U)}\). Per il codebook di DL, ovvero
+\(\set{D}_{c^\mathrm{(F)}}\), invece, la metrica di quantizzazione da
+minimizzare è
+\begin{equation}
+    \expect[\bm{h}^\mathrm{(D)} \mid q(\bm{h}^\mathrm{(U)})]{
+        \lnorm \bm{h}^\mathrm{(D)} - q(\bm{h}^\mathrm{(D)}) \rnorm^2
+    }, \label{eq:min-dl-codebook}
+\end{equation}
+dove il valore atteso è valutato sulla distribuzione di
+\(\bm{h}^\mathrm{(D)}\), dato che il canale di UL è stato quantizzato come
+\(q(\bm{h}^\mathrm{(U)}) = \bm{u}_{c^\mathrm{(F)}}\).
+
+Per la progettazione dei codebook tramite minimizzazione della
+\eqref{eq:min-ul-codebook} e \eqref{eq:min-dl-codebook}, poiché nella pratica
+le densità di probabilità di \(\bm{h}^\mathrm{(U)}\) e \(\bm{h}^\mathrm{(D)}
+\mid q(\bm{h}^\mathrm{(U)})\) non sono note a priori, è necessario fare ricorso
+a una procedura online, utilizzando vettori campionati aventi le statistiche
+desiderate. Una possibile opzione è, ad esempio, l'algoritmo
+\textit{Linde-Buzo-Gray} (\textit{LBG}).\cite{1094577}

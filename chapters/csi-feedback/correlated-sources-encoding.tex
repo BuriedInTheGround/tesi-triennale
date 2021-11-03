@@ -32,8 +32,8 @@ illustrata la situazione considerata.
     Per il problema della codifica di sorgenti distribuite per la sorgente
     \((X,Y)\), la regione di tasso raggiungibile è data da
     \begin{alignat}{1}
-        R_X &\ge \entropy{X \vert Y}, \label{eq:SW1} \\
-        R_Y &\ge \entropy{Y \vert X}, \label{eq:SW2} \\
+        R_X &\ge \entropy{X \given Y}, \label{eq:SW1} \\
+        R_Y &\ge \entropy{Y \given X}, \label{eq:SW2} \\
         R_X + R_Y &\ge \entropy{X,Y}. \label{eq:SWsum}
     \end{alignat}
 \end{thm}
@@ -44,7 +44,7 @@ Teorema~\ref{thm:sw}.
 \begin{figure}[ht]
     \centering
     \input{chapters/csi-feedback/sw-rate-region.tex}
-    \caption{Regione \(\mathcal{R}\) di tasso raggiungibile con la codifica di
+    \caption{Regione \(\set{R}\) di tasso raggiungibile con la codifica di
     sorgente Slepian-Wolf.}
     \label{fig:sw-rate-region}
 \end{figure}

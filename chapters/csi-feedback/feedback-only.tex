@@ -25,22 +25,22 @@ DL.
 \begin{proof}
     Possiamo vedere la procedura di feedback come una codifica Slepian-Wolf
     (vedi Sezione~\ref{sec:correlated-sources-encoding}) nella quale le due
-    sorgenti correlate (nel nostro caso, i canali di UL e DL) vengono
-    codificate separatamente e poi inviate a una destinazione (la BS) che deve
-    ricostruire entrambe. Si noti che nel nostro scenario il canale di UL è già
-    noto alla BS, di conseguenza questa parte della codifica risulta banale.
-    Ora, in presenza di feedforward, lo UT conosce sia la variabile di
-    feedforward \(c^\mathrm{(F)}\) che rappresenta la versione quantizzata di
+    sorgenti correlate (i canali di UL e DL) vengono codificate separatamente e
+    poi inviate a una destinazione (la BS) che deve ricostruire entrambe. Si
+    noti che nel nostro scenario il canale di UL è già noto alla BS, di
+    conseguenza questa parte della codifica risulta banale. Ora, in presenza
+    di feedforward, lo UT conosce sia la variabile di feedforward
+    \(c^\mathrm{(F)}\) che rappresenta la versione quantizzata di
     \(\bm{h}^\mathrm{(U)}\) che il canale di DL \(\bm{h}^\mathrm{(D)}\).
     Pertanto, denotano con \(R_\mathrm{L}\) il tasso medio per la
     rappresentazione locale del canale di UL alla BS, il teorema di
     Slepian-Wolf fornisce
     \begin{alignat}{1}
         b_\mathrm{B} &\ge \entropy{
-            \bm{h}^\mathrm{(D)},c^\mathrm{(F)} \vert \bm{h}^\mathrm{(U)}
+            \bm{h}^\mathrm{(D)},c^\mathrm{(F)} \given \bm{h}^\mathrm{(U)}
         }, \label{eq:fo-proof-1} \\
         R_\mathrm{L} &\ge \entropy{
-            \bm{h}^\mathrm{(U)} \vert \bm{h}^\mathrm{(D)},c^\mathrm{(F)}
+            \bm{h}^\mathrm{(U)} \given \bm{h}^\mathrm{(D)},c^\mathrm{(F)}
         }, \label{eq:fo-proof-2} \\
         b_\mathrm{B} + R_\mathrm{L} &\ge \entropy{
             \bm{h}^\mathrm{(D)},\bm{h}^\mathrm{(U)},c^\mathrm{(F)}
@@ -54,15 +54,15 @@ DL.
     \begin{equation}
         \label{eq:fo-proof-4}
         b_\mathrm{B} \ge \entropy{
-            \bm{h}^\mathrm{(D)},c^\mathrm{(F)} \vert \bm{h}^\mathrm{(U)}
+            \bm{h}^\mathrm{(D)},c^\mathrm{(F)} \given \bm{h}^\mathrm{(U)}
         }.
     \end{equation}
     Tuttavia, poiché \(c^\mathrm{(F)}\) è funzione deterministica di
-    \(\bm{h}^\mathrm{(U)}\), la \eqref{eq:fo-proof-4} è equivalente a
+    \(\bm{h}^\mathrm{(U)}\), la \eqref{eq:fo-proof-4} risulta equivalente a
     \begin{equation}
         \label{eq:fo-proof-5}
         b_\mathrm{B} \ge \entropy{
-            \bm{h}^\mathrm{(D)} \vert \bm{h}^\mathrm{(U)}
+            \bm{h}^\mathrm{(D)} \given \bm{h}^\mathrm{(U)}
         }.
     \end{equation}
     Quindi, abbiamo dimostrato che la segnalazione in feedforward non è utile

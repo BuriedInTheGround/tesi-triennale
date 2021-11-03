@@ -1,6 +1,4 @@
 \begin{tikzpicture}[>=latex]
-    %\tikzstyle{every node}=[font=\fontsize{11}{13}\sffamily]
-
     \draw[->] (0,0) -- (8,0)
     node[right]{\(R_X\)};
 
@@ -8,7 +6,7 @@
     node[above]{\(R_Y\)};
 
     \draw (1.8,3pt) -- (1.8,-3pt)
-    node[anchor=north]{\(\entropy{X \vert Y}\)};
+    node[anchor=north]{\(\entropy{X \given Y}\)};
 
     \draw (3.6,3pt) -- (3.6,-3pt)
     node[anchor=north]{\(\entropy{X}\)};
@@ -17,7 +15,7 @@
     node[anchor=north]{\(\entropy{X,Y}\)};
 
     \draw (3pt,2) -- (-3pt,2)
-    node[anchor=east]{\(\entropy{Y \vert X}\)};
+    node[anchor=east]{\(\entropy{Y \given X}\)};
 
     \draw (3pt,3) -- (-3pt,3)
     node[anchor=east]{\(\entropy{Y}\)};
@@ -44,5 +42,5 @@
     \foreach \y in {-0.2,-0.04,...,2.22}
     \draw[yslant=1.8] (1.8,\y cm) -- (1.925,\y cm);
 
-    \draw (4,3.5) node{\(\mathcal{R}\)};
+    \draw (4,3.5) node{\(\set{R}\)};
 \end{tikzpicture}
