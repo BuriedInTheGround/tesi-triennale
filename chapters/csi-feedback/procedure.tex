@@ -1,4 +1,5 @@
 \section{Procedura di codifica}
+\label{sec:procedure}
 
 Il Teorema~\ref{thm:feedback-only} mostra che, quando una codifica a tasso
 variabile viene utilizzata, è possibile operare un approccio feedback-only.
@@ -35,6 +36,7 @@ abbia entropia minima, come illustrato nella procedura a seguire.
 
     \item Applicare la stessa dimensione di blocco ai due alfabeti, ovvero
         porre \(b_\mathrm{B} = b_\mathrm{U}\).
+        \label{itm:alphabets-sizes}
 
     \item Per ogni \(j,\,j = 1,\dots,\beta\), costruire un sottoinsieme
         \(\set{V}_i\) di \(\set{V}\) tale che
@@ -57,17 +59,20 @@ abbia entropia minima, come illustrato nella procedura a seguire.
         \end{equation}
         dove \(p(\bm{v},\bm{d}_j)\) può essere valutata direttamente, nota la
         matrice di densità di probabilità discreta congiunta \(\bm{P}\).
+        \label{itm:subsets-of-v}
 
     \item Costruire tutte le possibili partizioni \(\set{P}\) di \(\set{D}\)
         tali che
-        \begin{equation*}
+        \begin{equation}
             \forall \set{D}_i \in \set{P},\
             \forall \bm{d}_j,\bm{d}_k \in \set{D}_i,\
             j \neq k
             \implies \set{V}_j \cap \set{V}_k = \emptyset ,
-        \end{equation*}
+            \label{eq:partitions-condition}
+        \end{equation}
         dove \(\set{V}_j,\set{V}_k\) sono sottoinsiemi di \(\set{V}\) come
         definiti al punto precedente.
+        \label{itm:partitions-of-d}
 
     \item Data una delle possibili partizioni \(\set{P}\) del punto precedente,
         sia \(\xi = \abs{\set{P}}\). Dato l'\(i\)-esimo insieme \(\set{D}_i \in
@@ -81,6 +86,7 @@ abbia entropia minima, come illustrato nella procedura a seguire.
             \set{P}_\mathrm{min} = \min_\set{P}
             \sum_{i=1}^\xi p(\bm{s}_i)\log_2\frac{1}{p(\bm{s}_i)}.
         \end{equation}
+        \label{itm:partitions-entropy}
 
 \end{enumerate}
 
