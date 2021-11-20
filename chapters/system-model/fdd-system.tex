@@ -1,7 +1,7 @@
 \begin{tikzpicture}[scale=0.65,>=latex]
     \tikzstyle{every node}=[font=\fontsize{9}{9}\sffamily]
 
-    \draw[->] (0,0) -- (20,0) node[right]{$f$};
+    \draw[->] (0,0) -- (20,0) node[black,right]{$f$};
 
     \filldraw[
         fill=nord10!75!nord4,
@@ -16,7 +16,7 @@
     \draw[<-] (3.2,1) -- (3.7,1) node[right,align=left]{
         \scriptsize Larghezza di banda \\ \scriptsize del sistema
     };
-    \draw[Red,semithick] (2.6,0) -- (2.6,5) node[Black,above]{
+    \draw[Red,semithick] (2.6,0) -- (2.6,5) node[black,above]{
         \(f_\mathrm{UL}\)
     };
 
@@ -32,7 +32,7 @@
         fill=gray,
         draw=darkgray
     ] (13,0) rectangle (14.2,2.5);
-    \draw[Red,semithick] (13.6,0) -- (13.6,5) node[Black,above]{
+    \draw[Red,semithick] (13.6,0) -- (13.6,5) node[black,above]{
         \(f_\mathrm{DL}\)
     };
 

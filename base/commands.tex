@@ -40,12 +40,13 @@
 \newcommand{\tran}[1]{\bm{#1}^{T}}      % Transpose
 \newcommand{\conjtran}[1]{\bm{#1}^{H}}  % Conjugate-transpose
 
-% Probability, expected value, and entropy
-\newcommand{\prob}[1]{\mathbb{P}\mleft[ #1 \mright]}
+% Probability, expected value, entropy, and mutual information
+\newcommand{\prob}[1]{\mathbb{P}\mleft( #1 \mright)}
 \NewDocumentCommand \expect { o m } {
     \mathbb{E}\IfValueT{#1}{\sb{#1}}\mleft[ #2 \mright]
 }
-\newcommand{\entropy}[1]{\mathbb{H}\mleft[ #1 \mright]}
+\newcommand{\entropy}[1]{\mathbb{H}\mleft( #1 \mright)}
+\newcommand{\mutual}[2]{\mathrm{I}\mleft( #1 \:;\: #2 \mright)}
 
 % Given that (conditional probability)
 \newcommand{\given}{\;\middle|\;}
