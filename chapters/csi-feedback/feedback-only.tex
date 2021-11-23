@@ -69,9 +69,17 @@ DL.
     al fine di ridurre i bit di feedback.
 \end{proof}
 
-Ancora una volta, vogliamo sottolineare che questo risultato è valido quando
-non sono imposte altre condizioni a sbilanciare i tassi di segnalazione in UL e
-DL, ovvero quando non ci sono ulteriori limitazioni su \(b_\mathrm{B}\) e
+Si noti come, considerando una codifica di sorgenti correlate distribuite
+Slepian-Wolf, il risultato ottenuto corrisponde al caso in cui una delle due
+sorgenti, anziché essere codificata e inviata al decodificatore, assume il
+ruolo di informazione laterale. Infatti, una stima del canale di UL
+\(\bm{h}^\mathrm{(U)}\) è già presente alla BS, e l'unica sorgente che
+dev'essere codificata (dallo UT) e inviata al decodificatore (la BS) è il
+canale di DL \(\bm{h}^\mathrm{(D)}\).
+
+Inoltre, vogliamo sottolineare il fatto che questo risultato è valido in
+assenza di condizioni che sbilanciano i tassi di segnalazione in UL e DL,
+ovvero quando non ci sono ulteriori limitazioni su \(b_\mathrm{B}\) e
 \(b_\mathrm{F}\). Nella pratica, gli svantaggi nel segnalare in UL e DL
 potrebbero essere differenti, e soluzioni alternative potrebbero divenire
 praticabili.
