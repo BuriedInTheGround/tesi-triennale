@@ -2,37 +2,45 @@
 
 \thispagestyle{empty}
 
-\vspace{9.6pt}  % Fix the underfull warning.
+\vspace{9.1pt}  % Fix the underfull warning.
 
-Nei sistemi cellulare, il \textit{channel-state information} (\textit{CSI},
-informazione sullo stato del canale) fa riferimento a note proprietà del canale
-di comunicazione. La stima del canale (in inglese, ``channel estimation''),
-ovvero il metodo usato per stimare il CSI, è di fondamentale importanza per
-massimizzare le prestazioni dei ricevitori nel compensare le alterazioni
-introdotte dal canale wireless.
+Le prestazioni di un sistema di comunicazioni possono essere migliorate se il
+trasmettitore conosce le caratteristiche del canale sul quale avviene la
+trasmissione. Ad esempio, quando più canali \textit{additive white Gaussian
+noise} (\textit{AWGN}, rumore Gaussiano bianco additivo) sono disponibili in
+parallelo, la conoscenza del canale consiste nel sapere l'attenuazione e la
+differenza di fase introdotta in ogni canale. Le caratteristiche del canale
+sono di solito acquisite con un processo di stima che opera sul segnale
+ricevuto, pertanto la stima è disponibile tipicamente al ricevitore.
 
-L'ottenimento di una stima accurata del canale dipende dalla modalità operativa
-del canale, vale a dire, \textit{time-division duplexing} (\textit{TDD}, duplex
-a divisione di tempo) e \textit{frequency-division duplexing} (\textit{FDD},
-duplex a divisione di frequenza). In modalità TDD, le trasmissioni in
-\textit{downlink} (\textit{DL}) (dalla \textit{base station} (\textit{BS},
-stazione base) agli \textit{user terminals} (\textit{UT}s, terminali utente)) e
-le trasmissioni in \textit{uplink} (\textit{UL}) (dagli UTs alla BS) avvengono
-sulla stessa banda di frequenza, ma in istanti di tempo differenti. In modalità
-FDD, la BS e gli UTs utilizzano bande di frequenza separate per lo scambio di
-dati in UL e DL, consentendo la trasmissione simultanea in entrambe le
-direzioni. La stima del canale risulta più semplice quando si opera in modalità
-TDD a causa della reciprocità del canale. D'altra parte, operando in modalità
-FDD, la BS solitamente ottiene una stima del canale di DL dallo UT con cui la
-avviene la comunicazione; nel seguito faremo riferimento a questo procedimento
-come approccio feedback-only.  In particolare, la BS trasmette dei segnali
-pilota tramite i quali lo UT stima il canale e ne manda indietro una versione
-quantizzata alla BS.
+L'ottenimento di una stima del canale al trasmettitore dipende invece da come i
+dispositivi alternano la trasmissione e la ricezione dei segnali e da quali
+canali usano nelle due fasi. Nelle reti cellulari, due modalità sono possibili,
+vale a dire, \textit{time-division duplexing} (\textit{TDD}, duplex a divisione
+di tempo) e \textit{frequency-division duplexing} (\textit{FDD}, duplex a
+divisione di frequenza). In modalità TDD, le trasmissioni in \textit{downlink}
+(\textit{DL}) (dalla \textit{base station} (\textit{BS}, stazione base) agli
+\textit{user terminals} (\textit{UT}s, terminali utente)) e le trasmissioni in
+\textit{uplink} (\textit{UL}) (dagli UTs alla BS) avvengono sulla stessa banda
+di frequenza, ma in istanti di tempo differenti. In modalità FDD, la BS e gli
+UTs utilizzano bande di frequenza separate per lo scambio di dati in UL e DL,
+consentendo la trasmissione simultanea in entrambe le direzioni. Ottenere la
+stima delle caratteristiche del canale al trasmettitore risulta più semplice
+quando si opera in modalità TDD a causa della reciprocità del canale. In questo
+caso infatti quando la BS ha stimato il canale in ricezione dallo UT, conosce
+anche il canale in trasmissione verso lo UT. D'altra parte, operando in
+modalità FDD, lo UT stima il canale e invia la stima alla BS. Nel seguito
+faremo riferimento a questo procedimento come approccio feedback-only. In
+particolare, la BS trasmette dei segnali pilota tramite i quali lo UT stima il
+canale e ne manda indietro una versione quantizzata alla BS.
 
 In questa trattazione, proponiamo una procedura di feedback del CSI a tasso
 variabile con approccio feedback-only, il cui obiettivo è di minimizzare
 l'overhead della segnalazione. Per fare ciò, sfrutteremo la dipendenza
 statistica presente tra il canale di UL e il canale di DL, che origina
 dall'ambiente fisico in cui si trova il canale fisico di comunicazione.
+
+Il materiale riportato in questa tesi riprende ed estende quanto presentato in
+\cite{https://doi.org/10.1002/ett.3628}.
 
 \input{chapters/introduction/notation.tex}

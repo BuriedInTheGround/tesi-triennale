@@ -1,0 +1,25 @@
+\section{Codifica con feedforward}
+
+Nel caso in cui si permette una distorsione nella ricostruzione del canale alla
+BS, la trasmissione di un segnale di feedforward può ridurre il tasso di
+feedback. Si noti che questo non avveniva nel caso senza distorsione, come
+dimostrato nella Sezione~\ref{sec:feedback-only}.
+
+Supponiamo in particolare che la BS trasmetta allo UT una descrizione di
+\(\bm{h}^\mathrm{(U)}\) senza distorsione, quindi che in fase di codifica lo UT
+conosca perfettamente sia \(\bm{h}^\mathrm{(D)}\) che \(\bm{h}^\mathrm{(U)}\).
+In questo caso abbiamo un problema di teoria della distorsione condizionata
+(\textit{Conditional Rate-Distortion Theory}). Usando le definizioni introdotte
+nella sezione precedente, in questo caso si ha \cite{Gray1972ConditionalRT} che
+\begin{equation}
+    b_\mathrm{B} \ge \inf_{p(
+        \hat{\bm{h}}^\mathrm{(D)} \mid \bm{h}^\mathrm{(D)}, \bm{h}^\mathrm{(U)}
+    )}
+    \mutual{
+        \bm{h}^\mathrm{(D)}
+    }{
+        \hat{\bm{h}}^\mathrm{(D)} \given \bm{h}^\mathrm{(U)}
+    } , \label{eq:rate-with-wz-and-feedforward}
+\end{equation}
+dove \(\hat{\bm{h}}^\mathrm{(D)}\) è la versione distorta di
+\(\bm{h}^\mathrm{(D)}\) ottenuta al decodificatore, ovvero alla base station.

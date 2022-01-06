@@ -134,45 +134,9 @@ dovrà utilizzare è \(\set{P}_\mathrm{min} = \{ \{\bm{d}_1\}, \{\bm{d}_2,
 \bm{d}_3, \bm{d}_4\} \}\), con una relativa entropia di
 $0.65002\,\mathrm{bit}$.
 
-%%%$ Vogliamo far notare come, dal punto di vista grafico, osservando la
-%%%$ Figura~\ref{fig:subsets-of-v}, la condizione \eqref{eq:partitions-condition}
-%%%$ che determina se una partizione è valida o meno esprime quanto segue: se due
-%%%$ sottoinsiemi di $\set{V}$ tra quelli individuati si intersecano (come
-%%%$ $\set{V}_1$ e $\set{V}_4$ in questo caso), i corrispondenti simboli in
-%%%$ \begin{figure}[ht]
-%%%$     \centering
-%%%$     \input{appendices/procedure-example/subsets-of-v.tex}
-%%%$     %\caption{Rappresentazione insiemistica dell'insieme $\set{V}$ e dei suoi
-%%%$     %sottoinsiemi così come ricavati nella fase~\ref{itm:subsets-of-v} della
-%%%$     %procedura.}
-%%%$     \caption{Rappresentazione insiemistica di $\set{V}$ e dei suoi
-%%%$     sottoinsiemi.}
-%%%$     \label{fig:subsets-of-v}
-%%%$ \end{figure}
-%%%$ $\set{D}$ (qui $\bm{d}_1$ e $\bm{d}_4$) non potranno mai stare all'interno di
-%%%$ uno stesso insieme di una partizione di $\set{D}$. È possibile verificare
-%%%$ quanto appena descritto esaminando le partizioni riportate nella tabella
-%%%$ soprastante. La non sovrapposizione tra sottoinsiemi di $\set{V}$ è esattamente
-%%%$ ciò che permette alla BS di ricavare correttamente il canale di DL a partire
-%%%$ dal solo indice della partizione selezionata dallo UT.
-
-%%%$ Poiché c'è una corrispondenza biunivoca tra i simboli in $\set{D}$ e i
-%%%$ sottoinsiemi di $\set{V}$ determinati dalla fase~\ref{itm:subsets-of-v}...
-
 Si noti come l'utilizzo della partizione di \(\set{D}\) selezionata fornisca
 una riduzione del tasso di codifica del \(50\%\), da \(2\;\mathrm{bit}\) a
 \(1\;\mathrm{bit}\): è infatti sufficiente per lo UT inviare alla BS l'indice
 $h \in \{1,2\}$ di uno dei due sottoinsiemi della partizione ($\set{D}_1 =
 \{\bm{d}_1\}$ e $\set{D}_2 = \{\bm{d}_2, \bm{d}_3, \bm{d}_4\}$), anziché
 l'indice di uno dei quattro simboli in \(\set{D}\).
-
-% \(\{ \{\bm{d}_1\}, \{\bm{d}_2\}, \{\bm{d}_3\}, \{\bm{d}_4\} \}\) & 1.6983893 \\
-% \(\{ \{\bm{d}_1\}, \{\bm{d}_2\}, \{\bm{d}_3, \bm{d}_4\} \}\) & 1.040852083 \\
-% \(\{ \{\bm{d}_1\}, \{\bm{d}_2, \bm{d}_4\}, \{\bm{d}_3\} \}\) & 1.440087625 \\
-% \(\{ \{\bm{d}_1\}, \{\bm{d}_2, \bm{d}_3\}, \{\bm{d}_4\} \}\) & 1.34722304 \\
-% \(\{ \{\bm{d}_1\}, \{\bm{d}_2, \bm{d}_3, \bm{d}_4\} \}\) & 0.6500224216 \\
-% \(\{ \{\bm{d}_1, \bm{d}_3\}, \{\bm{d}_2\}, \{\bm{d}_4\} \}\) & 1.146277995 \\
-% \(\{ \{\bm{d}_1, \bm{d}_3\}, \{\bm{d}_2, \bm{d}_4\} \}\) & 0.8879763195 \\
-% \(\{ \{\bm{d}_1, \bm{d}_2\}, \{\bm{d}_3\}, \{\bm{d}_4\} \}\) & 1.468815341 \\
-% \(\{ \{\bm{d}_1, \bm{d}_2\}, \{\bm{d}_3, \bm{d}_4\} \}\) & 0.8112781245 \\
-% \(\{ \{\bm{d}_1, \bm{d}_2, \bm{d}_3\}, \{\bm{d}_4\} \}\) & 0.7642045065 \\

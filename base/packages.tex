@@ -29,11 +29,17 @@
 
 % Hyperlinks
 \usepackage[
+    unicode,
+    pdfa,
     colorlinks=true,
     linkcolor=black,
     citecolor=black,
     urlcolor=black
 ]{hyperref}
+
+% Generate PDF/A   [enable only when compiling for PDF/A]
+%\let\pdfcreationdate=\creationdate
+%\usepackage[a-2b,mathxmp]{pdfx}
 
 % Professional tables
 \usepackage{booktabs}

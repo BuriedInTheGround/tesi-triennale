@@ -1,0 +1,50 @@
+\chapter{Codifica senza distorsione}
+
+\thispagestyle{empty}
+
+Consideriamo la seguente procedura:
+\begin{enumerate}
+
+    \item La BS stima il canale di uplink, lo codifica con un codificatore
+        adeguato e invia la versione codificata allo UT.
+
+    \item Lo UT stima il canale di downlink e, utilizzando anche il messaggio
+        ricevuto al punto 1, codifica il canale e lo trasmette alla BS.
+
+    \item La BS utilizza il canale di UL stimato al punto 1, la sua versione
+        codificata del punto 1 e il messaggio ricevuto al punto 2 per stimare
+        il canale.
+
+\end{enumerate}
+Le codifiche effettuate ai punti 1 e 2 sono con parole di codice di lunghezza
+variabile, pertanto il tasso di comunicazione nei punti 1 e 2 è variabile. Sia
+\(b_\mathrm{F}\) il numero medio di bit usati per la codifica al punto 1 e
+\(b_\mathrm{B}\) il numero medio di bit usati per la codifica al punto 2.
+
+Detto quindi \(b_\mathrm{F}\) il numero di bit trasmessi in feedforward, ovvero
+dalla BS allo UT, e detto \(b_\mathrm{B}\) il numero di bit trasmessi come
+feedback, dallo UT alla BS, definiamo
+\[
+    B = b_\mathrm{F} + b_\mathrm{B}
+\]
+il numero totale di bit scambiati tra BS e UT.
+
+Nella procedura a tasso variabile, illustrata in seguito, imponiamo
+\(b_\mathrm{F} = 0\), ovvero nessun bit viene inviato dalla BS allo UT in
+feedforward. In particolare, permettiamo al numero di bit di feedback
+\(b_\mathrm{B}\) di variare, pertanto la segnalazione di feedback ha un tasso
+variabile.
+
+Anzitutto, modelliamo lo scenario considerato come una codifica di sorgente di
+due sorgenti correlate (i canali di UL e DL, in questo caso). Quindi,
+dimostreremo che la presenza di una segnalazione di feedforward da parte della
+BS non contribuisce a ridurre il tasso medio della segnalazione di feedback,
+risultando quindi superflua al fine di ridurre l'overhead complessivo. Infine,
+proponiamo una procedura con approccio feedback-only a tasso variabile, basata
+sull'entropia condizionale del canale di DL condizionata al canale di UL.
+
+\input{chapters/code-without-distortion/correlated-sources-encoding.tex}
+
+\input{chapters/code-without-distortion/feedback-only.tex}
+
+\input{chapters/code-without-distortion/procedure.tex}

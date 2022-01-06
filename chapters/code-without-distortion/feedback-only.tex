@@ -1,4 +1,5 @@
 \section{Approccio feedback-only}
+\label{sec:feedback-only}
 
 Mostriamo adesso l'ottimalità dell'approccio feedback-only per la
 segnalazione del CSI quando un tasso di segnalazione variabile viene
@@ -28,13 +29,14 @@ DL.
     sorgenti correlate (i canali di UL e DL) vengono codificate separatamente e
     poi inviate a una destinazione (la BS) che deve ricostruire entrambe. Si
     noti che nel nostro scenario il canale di UL è già noto alla BS, di
-    conseguenza questa parte della codifica risulta banale. Ora, in presenza
-    di feedforward, lo UT conosce sia la variabile di feedforward
+    conseguenza questa parte della codifica risulta banale. Ora, in presenza di
+    feedforward, lo UT conosce sia la variabile di feedforward
     \(c^\mathrm{(F)}\) che rappresenta la versione quantizzata di
-    \(\bm{h}^\mathrm{(U)}\) che il canale di DL \(\bm{h}^\mathrm{(D)}\).
-    Pertanto, denotano con \(R_\mathrm{L}\) il tasso medio per la
-    rappresentazione locale del canale di UL alla BS, il teorema di
-    Slepian-Wolf fornisce
+    \(\bm{h}^\mathrm{(U)}\) (si veda l'Appendice~\ref{app:codebook-design} per
+    la definizione formale di \(c^\mathrm{(F)}\)) che il canale di DL
+    \(\bm{h}^\mathrm{(D)}\). Pertanto, denotando con \(R_\mathrm{L}\) il tasso
+    medio per la rappresentazione locale del canale di UL alla BS, il teorema
+    di Slepian-Wolf fornisce
     \begin{alignat}{1}
         b_\mathrm{B} &\ge \entropy{
             \bm{h}^\mathrm{(D)},c^\mathrm{(F)} \given \bm{h}^\mathrm{(U)}
@@ -51,6 +53,7 @@ DL.
     e la \eqref{eq:fo-proof-3} sono trascurabili, o in altre parole, non è
     limitante porre \(R_\mathrm{L} = \infty\); quindi, la sola condizione
     rilevante è
+    \vspace{0.1pt}  % Fix the underfull warning.
     \begin{equation}
         \label{eq:fo-proof-4}
         b_\mathrm{B} \ge \entropy{
