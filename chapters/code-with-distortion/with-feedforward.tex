@@ -1,4 +1,5 @@
 \section{Codifica con feedforward}
+\label{sec:with-feedforward}
 
 Nel caso in cui si permette una distorsione nella ricostruzione del canale alla
 BS, la trasmissione di un segnale di feedforward può ridurre il tasso di
@@ -23,3 +24,30 @@ nella sezione precedente, in questo caso si ha \cite{Gray1972ConditionalRT} che
 \end{equation}
 dove \(\hat{\bm{h}}^\mathrm{(D)}\) è la versione distorta di
 \(\bm{h}^\mathrm{(D)}\) ottenuta al decodificatore, ovvero alla base station.
+
+Usando ipotesi più stringenti, supponiamo ora che la BS trasmetta allo UT una
+descrizione del canale di UL quantizzata \(q(\bm{h}^\mathrm{(U)})\). Questa
+condizione corrisponde al caso reale, infatti la quantizzazione è necessaria
+essendo \(\bm{q}^\mathrm{(U)}\) a valori continui. In questo caso la
+rappresentazione del canale di UL allo UT è imperfetta, e abbiamo allora un
+problema di distorsione con informazione laterale mista
+(\textit{Rate-Distortion With Mixed Types of Side Information}) e si ha
+\cite{1614094} che
+\begin{equation}
+    b_\mathrm{B} \ge \inf_{W \in \set{M}_{
+        \bm{h}^\mathrm{(D)} \mid \bm{h}^\mathrm{(U)} \{Z\}
+    }(p, D)} \mutual{
+        \bm{h}^\mathrm{(D)}
+    }{
+        W \given \bm{h}^\mathrm{(U)} \:,\; Z
+    } , \label{eq:rate-with-wz-mixed-si}
+\end{equation}
+dove \(\set{M}_{\bm{h}^\mathrm{(D)} \mid \bm{h}^\mathrm{(U)} \{Z\}}(p, D)\) è
+l'insieme di tutte le variabili aleatorie \(W\) descritte da un canale di test
+con la proprietà che \(W \to (\bm{h}^\mathrm{(D)}, \bm{h}^\mathrm{(U)}) \to Z\)
+e per le quali esiste una funzione \(f: \set{W} \times \set{U} \times \set{Z}
+\to \hat{\set{D}}\) tale che
+\begin{equation}
+    \expect{D(\bm{h}^\mathrm{(D)}, \hat{\bm{h}^\mathrm{(D)}})} \le d, \quad
+    \textrm{dove } \hat{\bm{h}^\mathrm{(D)}} = f(W, \bm{h}^\mathrm{(U)}, Z) .
+\end{equation}

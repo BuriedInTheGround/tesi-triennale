@@ -1,0 +1,47 @@
+\chapter{Conclusioni}
+
+\thispagestyle{empty}
+
+In questa tesi ho riportato e analizzato quanto noto in letteratura sul
+problema della stima del canale di DL alla BS per sistemi cellulari FDD. Questo
+problema viene affrontato sfruttando la parziale dipendenza tra i canali di UL
+e DL data dal mezzo fisico di trasmissione. Sono stati considerati
+principalmente tre casi: il primo in assenza di distorsione, basato su una
+segnalazione feedback-only a tasso variabile, e gli ultimi due in presenza di
+distorsione, di cui uno senza e l'altro con segnalazione di feedforward.
+
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{lll}
+        \toprule
+        Distorsione & Bit in feedforward & Bit in feedback \\
+        \midrule
+        Assente                     & \(b_\mathrm{F} = 0\) & \(b_\mathrm{B} = B\) \\
+        Presente                    & \(b_\mathrm{F} = 0\) & \(b_\mathrm{B} > 0\) \eqref{eq:rate-with-wz} \\
+        Presente (solo in feedback) & \(b_\mathrm{F} > 0\) & \(b_\mathrm{B} > 0\) \eqref{eq:rate-with-wz-and-feedforward} \\
+        Presente                    & \(b_\mathrm{F} > 0\) & \(b_\mathrm{B} > 0\) \eqref{eq:rate-with-wz-mixed-si} \\
+        \bottomrule
+    \end{tabular}
+    \caption{
+        Configurazioni di bit ripartiti tra la segnalazione di feedforward e
+        feedback nelle differenti situazioni studiate.
+    }
+    \label{tab:results-summary}
+\end{table}
+
+La precedente tabella riassume i risultati ottenuti nelle diverse
+configurazioni considerate. In questa tesi un'attenzione particolare è stata
+posta sul primo caso, quello in assenza di distorsione, di cui in
+Sezione~\ref{sec:procedure} viene riportata una procedura di codifica che
+utilizza l'approccio feedback-only, la cui efficacia è stata dimostrata in
+\cite{https://doi.org/10.1002/ett.3628}.
+
+Come osservato in Sezione~\ref{sec:with-feedforward}, un ulteriore risultato
+presentato in questa tesi è che la presenza della segnalazione di feedforward,
+non utile a ridurre il NMSE nel caso senza distorsione, sia invece di aiuto al
+fine di ricostruire con maggior affidabilità il canale di DL alla BS nel caso
+in cui vi sia distorsione. In particolare, in una situazione realistica, poiché
+il canale di UL inviato in feedforward allo UT dev'essere quantizzato, la
+condizione al numero di bit per il tasso di feedback che si applica è la
+\eqref{eq:rate-with-wz-mixed-si}.
