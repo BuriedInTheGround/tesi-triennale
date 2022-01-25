@@ -131,17 +131,16 @@ tasso
     \label{eq:rate-with-wz}
 \end{equation}
 dove la variabile aleatoria ausiliaria \(Z \in \set{Z}\), con \(\set{Z}\)
-insieme finito, deve soddisfare i vincoli: i) \(\bm{h}^\mathrm{(U)},Z\)
-condizionate indipendentemente dato \(\bm{h}^\mathrm{(D)}\); ii) esiste una
-funzione \(f: \set{V}\times\set{Z} \to \hat{\set{D}}\), tale che
-\(\expect{D(\bm{h}^\mathrm{(D)},f(\bm{h}^\mathrm{(U)},Z))} \le d\), dove
-\(\hat{\set{D}}\) è l'alfabeto in cui prende valori la versione ricevuta alla
-BS del canale di DL.
+insieme finito, deve soddisfare i vincoli: i) \(\bm{h}^\mathrm{(U)},Z\) sono
+indipendenti dato \(\bm{h}^\mathrm{(D)}\); ii) esiste una funzione \(f: \set{V}
+\times \set{Z} \to \hat{\set{D}}\), tale che \(\expect{D(\bm{h}^\mathrm{(D)},
+f(\bm{h}^\mathrm{(U)},Z))} \le d\), dove \(\hat{\set{D}}\) è l'alfabeto in cui
+prende valori la versione ricevuta alla BS del canale di DL.
 
 Nella pratica, risultati simili al limite teorico \eqref{eq:rate-with-wz} si
 possono ottenere, ad esempio, utilizzando una codifica tramite sindrome che
 sfrutti la presenza dell'informazione laterale, ovvero la stima di
 \(\bm{h}^\mathrm{(U)}\) nota al decodificatore, la BS. A questo proposito, si
-veda il lavoro di S.S. Pradhan e K. Ramachandran.\cite{1184140}
+veda il lavoro di S.S. Pradhan e K. Ramachandran\cite{1184140}.
 
 \input{chapters/code-with-distortion/with-feedforward.tex}
