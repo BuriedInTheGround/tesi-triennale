@@ -1,0 +1,65 @@
+\section{Da Mixed Side Information a Wyner-Ziv}
+\label{sec:msi-system-to-wz}
+
+\begin{prop}
+    \label{prop:msi-to-wz}
+
+    Sia \(X\) la sorgente codificata da un sistema Mixed Side Information
+    \cite{1614094}. Sia \(Y\) l'informazione laterale nota sia al codificatore
+    che al decodificatore di questo sistema e \(Z\) l'informazione laterale
+    nota al solo decodificatore. Tale sistema può essere ridotto a un sistema
+    Wyner-Ziv \cite{1055508} dove la sorgente è \(X'=X,Y\) e l'informazione
+    laterale (nota al solo decodificatore) è \(Z'=Y,Z\).
+\end{prop}
+
+\begin{figure}[hb]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \input{chapters/code-with-distortion/mini-msi.tex}
+        \caption{}
+        \label{fig:mini-msi}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.54\textwidth}
+        \input{chapters/code-with-distortion/mini-wz.tex}
+        \caption{}
+        \label{fig:mini-wz}
+    \end{subfigure}
+    \caption{
+        (a) Il sistema Mixed Side Information.
+        (b) Il sistema Wyner-Ziv.
+    }
+    \label{fig:mini-schemes}
+\end{figure}
+
+\begin{proof}
+    È sufficiente mostrare che il tasso di trasmissione in funzione della
+    distorsione per un sistema Wyner-Ziv con le caratteristiche descritte dalla
+    proposizione (rappresentato in Figura~\ref{fig:mini-wz}) è equivalente al
+    tasso di trasmissione in funzione della distorsione di un sistema
+    \textit{Mixed Side Information} (\textit{MSI}), mostrato in
+    Figura~\ref{fig:mini-msi}. Inoltre, poiché in entrambi i casi il tasso di
+    trasmissione è l'estremo inferiore di una certa informazione mutua, è
+    sufficiente mostrare che le due informazioni mutue si equivalgono.
+
+    Sia \(W\) la variabile aleatoria ausiliaria per entrambi i sistemi. Per un
+    sistema MSI si ha
+    \begin{equation}
+        \begin{aligned}
+            \mutual{X}{W \given Y,Z} &= \mutual{X}{W,Y,Z} - \mutual{X}{Y,Z} \\
+            &= \entropy{X} - \entropy{X \given W,Y,Z} - \entropy{X} + \entropy{X \given Y,Z} \\
+            &= \entropy{X \given Y,Z} - \entropy{X \given W,Y,Z} \,,
+        \end{aligned}
+    \end{equation}
+    e per un sistema Wyner-Ziv si ha
+    \begin{equation}
+        \begin{aligned}
+            \mutual{X'}{W \given Z'} &= \mutual{X,Y}{W \given Y,Z} \\
+            &= \mutual{X,Y}{W,Y,Z} - \mutual{X,Y}{Y,Z}\\
+            &= \entropy{X,Y} - \entropy{X,Y \given W,Y,Z} - \entropy{X,Y} + \entropy{X,Y \given Y,Z} \\
+            &= \entropy{X,Y \given Y,Z} - \entropy{X,Y \given W,Y,Z} \\
+            &= \entropy{X \given Y,Z} - \entropy{X \given W,Y,Z} \,.
+        \end{aligned}
+    \end{equation}
+    Si ha quindi che \(\mutual{X}{W \given Y,Z} = \mutual{X'}{W \given Z'}\) e
+    la dimostrazione è conclusa.
+\end{proof}

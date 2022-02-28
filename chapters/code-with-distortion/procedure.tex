@@ -1,0 +1,39 @@
+\section{Procedura di codifica con distorsione}
+\label{sec:procedure-with-distortion}
+
+Il risultato della Proposizione~\ref{prop:msi-to-wz} ci permette di considerare
+il sistema in esame nella situazione in cui la trasmissione di feedforward è
+già avvenuta. A seguito del feedforward infatti, sia la BS che lo UT hanno a
+disposizione una descrizione del canale di UL quantizzata
+\(q(\bm{h}^\mathrm{(U)})\).
+
+A questo punto è possibile sviluppare una procedura di codifica di sorgente per
+la trasmissione in feedback, la quale deve consentire alla BS di ricostruire il
+canale di DL minimizzando il tasso della trasmissione stessa. Una panoramica di
+una possibile procedura è esposta di seguito, corredata da una versione
+schematizzata in Figura~\ref{fig:procedure-schema}.
+
+Allo UT, il canale di DL viene anzitutto quantizzato (per la costruzione del
+codebook si veda l'Appendice~\ref{app:codebook-design}). In seguito, il
+codificatore utilizza un codice di correzione d'errore per codificare
+l'informazione sul canale di DL quantizzato. Quindi, un sottoinsieme delle
+parole di codice ottenute viene trasmesso alla BS, considerando l'informazione
+laterale \(q(\bm{h}^\mathrm{(U)})\) in comune, così da evitare l'invio di
+informazioni già note al decodificatore. Alla ricezione, la BS impiega un
+decodificatore a decisione morbida (\textit{soft-decision decoder}) per
+determinare, con l'aiuto dell'informazione laterale \(\bm{h}^\mathrm{(U)}\), la
+stima più probabile del canale di UL \(\hat{\bm{h}}^\mathrm{(D)}\).
+\begin{figure}[ht]
+    \centering
+    \input{chapters/code-with-distortion/procedure-schema.tex}
+    \caption{
+        Schema della codifica di sorgente con distorsione per la trasmissione
+        del canale di DL in feedback.
+    }
+    \label{fig:procedure-schema}
+\end{figure}
+\newline
+Il decodificatore a decisione morbida infatti può utilizzare un'informazione a
+priori sulla distribuzione delle parole di codice. Questa distribuzione è
+ottenuta dalla conoscenza del canale di UL e dalla correlazione di quest'ultimo
+con il canale di DL.
